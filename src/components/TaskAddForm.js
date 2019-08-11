@@ -67,6 +67,9 @@ class TaskAddForm extends Component {
             return;
         }
         addTask(taskName, taskStatus, taskDescription);
+
+        localStorage.setItem('todos', JSON.stringify(this.props.todos));
+
         this.setState({
             taskName: '',
             taskDescription: ''
@@ -74,9 +77,9 @@ class TaskAddForm extends Component {
     };
 }
 
-// const mapStateToProps = state => ({
-//     todos: getVisibleTodos(state.todos, state.visibilityFilter)
-// });
+const mapStateToProps = state => ({
+    todos: state.todos
+});
 
 const mapDispatchToProps = dispatch => {
     return {

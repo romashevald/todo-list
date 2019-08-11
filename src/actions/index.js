@@ -15,10 +15,11 @@ export const setVisibilityFilter = filter => ({
     filter
 });
 
-export const editTodo = (status = STATUSES.TODO, description) => ({
+export const editTodo = (id, status = STATUSES.TODO, description) => ({
     type: EDIT_TODO,
-    status
-    , description
+    id,
+    status,
+    description
 });
 
 export const removeTodo = (id) => ({
