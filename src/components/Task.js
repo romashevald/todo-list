@@ -14,12 +14,10 @@ const selectClassName = (status) => {
 };
 
 const Task = ({onClick, completed, text, description, status}) => (
-    <li
-        onClick={onClick}
+    <li onClick={onClick}
         style={{
             color: selectClassName(status)
-        }}
-    >
+        }}>
         {`${text} (${description})`}
     </li>
 );

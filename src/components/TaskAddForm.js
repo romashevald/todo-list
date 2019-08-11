@@ -67,6 +67,10 @@ class TaskAddForm extends Component {
             return;
         }
         addTask(taskName, taskStatus, taskDescription);
+        this.setState({
+            taskName: '',
+            taskDescription: ''
+        })
     };
 }
 

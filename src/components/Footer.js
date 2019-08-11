@@ -8,10 +8,10 @@ const Footer = () => (
         <FilterLink filter={VisibilityFilters.SHOW_ALL}>
             All
         </FilterLink>
-        <FilterLink filter={VisibilityFilters.SHOW_ACTIVE}>
+        <FilterLink filter={VisibilityFilters.SHOW_IN_PROGRESS}>
             Active
         </FilterLink>
-        <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>
+        <FilterLink filter={VisibilityFilters.SHOW_DONE}>
             Completed
         </FilterLink>
     </div>

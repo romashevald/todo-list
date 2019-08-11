@@ -1,4 +1,4 @@
-import {ADD_TODO} from "../actions/actions";
+import {ADD_TODO, REMOVE_TODO, EDIT_TODO} from "../actions/actions";
 
 export const STATUSES = {
     TODO: 'todo',
@@ -19,10 +19,22 @@ const todos = (state = [], action) => {
                     idDeleted: false
                 }
             ];
-        case 'TOGGLE_TODO':
+        case EDIT_TODO:
+            return state.map(todo =>
+                (todo.id === action.id) ? {
+                        ...todo
+                        , status: todo.status
+                    }
+                    : todo
+            );
+        case REMOVE_TODO:
             return state.map(todo =>
                 (todo.id === action.id)
-                    ? {...todo, status: todo.status, isDeleted: true}
+                    ? {
+                        ...todo
+                        , status: todo.status
+                        , isDeleted: true
+                    }
                     : todo
             );
         default:

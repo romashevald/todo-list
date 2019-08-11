@@ -7,8 +7,6 @@ import TaskAddForm from "./TaskAddForm";
 const App = () => (
     <div className="board">
         <header className="App-header">
-            {/*<TaskList/>*/}
-            {/*<TaskAddForm/>*/}
             <TaskAddForm/>
             <VisibleTodoList />
             <Footer/>
@@ -17,4 +15,3 @@ const App = () => (
 );
 
 export default App
-
