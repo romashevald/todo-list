@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {STATUSES} from "../reducers/todos";
 import {URL_LIST} from "../router/constants";
-import {Link} from "react-router-dom";
 import {editTodo} from "../actions";
 import {Redirect} from "react-router";
 

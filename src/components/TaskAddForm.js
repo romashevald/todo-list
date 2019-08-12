@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addTodo} from "../actions";
-import {Link} from 'react-router-dom';
 import {URL_LIST} from '../router/constants';
 import {Redirect} from 'react-router';
 
