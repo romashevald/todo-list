@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {STATUSES} from "../reducers/todos";
 import {addTodo} from "../actions";
+import {Link} from 'react-router-dom';
+import {URL_LIST} from '../router/constants';
 
 class TaskAddForm extends Component {
     constructor(props) {
@@ -9,12 +10,11 @@ class TaskAddForm extends Component {
         this.state = {
             taskName: '',
             taskDescription: '',
-            taskStatus: STATUSES.TODO
         };
     }
 
     render() {
-        const {taskName, taskDescription, taskStatus} = this.state;
+        const {taskName, taskDescription} = this.state;
 
         let input;
         return (
@@ -33,26 +33,16 @@ class TaskAddForm extends Component {
                                name='taskDescription'
                                onChange={this._handleChange}/>
                     </div>
-
-                    <div className='task-status'>{'task-status'}</div>
-                    <div className='input-add-form'>
-                        <select value={taskStatus}
-                                name='taskStatus'
-                                onChange={this._handleChange}>
-                            <option value={STATUSES.TODO}>{STATUSES.TODO}</option>
-                            <option value={STATUSES.IN_PROGRESS}>{STATUSES.IN_PROGRESS}</option>
-                            <option value={STATUSES.DONE}>{STATUSES.DONE}</option>
-                        </select>
-                    </div>
-                    <button type="submit" onClick={this._onSubmit}>
+                    <button onClick={this._onSubmit}>
                         Add Todo
                     </button>
+                    <Link to={URL_LIST}>{'<<'}</Link>
                 </div>
             </div>
         );
     }
 
-    _handleChange = e => {
+    _handleChange = (e) => {
         const el = e.target;
         let {value, name} = el;
         this.setState({
@@ -61,14 +51,12 @@ class TaskAddForm extends Component {
     };
 
     _onSubmit = () => {
-        const {taskName, taskDescription, taskStatus} = this.state;
+        const {taskName, taskDescription} = this.state;
         const {addTask} = this.props;
         if (taskName.trim().length === 0) {
             return;
         }
-        addTask(taskName, taskStatus, taskDescription);
-
-        localStorage.setItem('todos', JSON.stringify(this.props.todos));
+        addTask(taskName, taskDescription);
 
         this.setState({
             taskName: '',
@@ -77,13 +65,9 @@ class TaskAddForm extends Component {
     };
 }
 
-const mapStateToProps = state => ({
-    todos: state.todos
-});
-
 const mapDispatchToProps = dispatch => {
     return {
-        addTask: (text, status, description) => dispatch(addTodo(text, status, description))
+        addTask: (text, description) => dispatch(addTodo(text, description))
     }
 };
 

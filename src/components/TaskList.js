@@ -2,18 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Task from "./Task";
 
-const TaskList = ({todos, toggleTodo}) => {
-    // console.log(log'===todos', todos);
-    // console.log('===toggleTodo', toggleTodo);
+const TaskList = ({todos}) => {
     return (
-        <ul>
+        <div className="task-list">
             {todos.map(todo =>
-                <Task key={todo.id}
-                      {...todo}
-                      onClick={() => toggleTodo(todo.id)}
-                />
+                <Task key={todo.id} {...todo}/>
             )}
-        </ul>
+        </div>
     );
 };
 
@@ -25,7 +20,6 @@ TaskList.propTypes = {
         description: PropTypes.string.isRequired,
         isDeleted: PropTypes.bool.isRequired
     }).isRequired).isRequired,
-    toggleTodo: PropTypes.func.isRequired
 };
 
 export default TaskList

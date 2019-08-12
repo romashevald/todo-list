@@ -1,12 +1,12 @@
 import {ADD_TODO, REMOVE_TODO, SET_VISIBILITY_FILTER, EDIT_TODO} from "./actions";
-import {STATUSES} from "../reducers/todos";
 
 let nextTodoId = 0;
 
-export const addTodo = (text, status, description) => ({
+export const addTodo = (text, description) => ({
     type: ADD_TODO,
     id: nextTodoId++,
-    text, status, description
+    text
+    , description
     , isDeleted: false
 });
 
@@ -15,7 +15,7 @@ export const setVisibilityFilter = filter => ({
     filter
 });
 
-export const editTodo = (id, status = STATUSES.TODO, description) => ({
+export const editTodo = (id, status, description) => ({
     type: EDIT_TODO,
     id,
     status,

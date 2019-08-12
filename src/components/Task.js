@@ -1,56 +1,65 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {STATUSES} from "../reducers/todos";
-import {editTodo} from "../actions/actions";
 import connect from "react-redux/es/connect/connect";
 import {URL_EDIT, URL_LIST} from "../router/constants";
-import App from "./App";
-import TaskEdit from "./TaskEdit";
-import {Switch, Route, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+import {removeTodo} from "../actions";
 
 const selectClassName = (status) => {
     switch (status) {
         case STATUSES.TODO:
-            return '#FF0000';
+            return 'task-todo';
         case STATUSES.IN_PROGRESS:
-            return '#FFA500';
+            return 'task-in-progress';
         case STATUSES.DONE:
-            return '#44cc00';
+            return 'task-done';
+        default:
+            return '';
     }
 };
 
 class Task extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
-        const {onClick, completed, text, description, status, id, todos} = this.props;
+        const {text, description, status, id} = this.props;
 
         return (
-            <div style={{border: '1px pink solid'}}>
+            <div className={`task ${selectClassName(status)}`}>
                 <div>{text}</div>
                 <div>{description}</div>
-
                 <div>
                     <div>
                         <Link to={`${URL_LIST}/${id}${URL_EDIT}`}>Edit</Link>
                     </div>
-                    <div>Remove</div>
+                    <div>
+                        <button onClick={this._handleRemove.bind(this)}>Remove</button>
+                    </div>
                 </div>
 
             </div>
         );
     }
+
+    _handleRemove() {
+        const {editTodo, id} = this.props;
+        editTodo(id);
+    }
 }
 
 Task.propTypes = {
-    onClick: PropTypes.func.isRequired,
     status: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired
 };
 
+const mapStateToProps = state => ({
+    todos: state.todos
+});
 
-export default connect(null, null)(Task)
+const mapDispatchToProps = dispatch => ({
+    editTodo: (id) => dispatch(removeTodo(id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Task)

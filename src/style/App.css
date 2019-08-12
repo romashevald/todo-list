@@ -1,0 +1,100 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column nowrap;
+    font-size: calc(4px + 2vmin);
+    color: rgb(41, 43, 44);
+    align-items: stretch;
+}
+
+.footer {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-group-button {
+    margin: 0;
+}
+
+.footer-button {
+    height: 1.5rem;
+    border: none;
+    background-color: rgb(91, 192, 222);
+    color: rgb(247, 247, 247);
+    cursor: pointer;
+}
+
+.footer-button:hover {
+    background-color: rgb(91, 192, 222);
+    opacity: 0.8;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.add-button {
+    background-color: rgb(92, 184, 92);
+    width: 10rem;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: 0.16em solid rgba(255, 255, 255, 0);
+    cursor: pointer;
+    color: rgb(247, 247, 247);
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.add-button:hover {
+    background-color: rgb(92, 184, 92);
+    opacity: 0.8;
+}
+
+.task-add-form {
+}
+
+.task-list {
+    background-color: rgb(247, 247, 247);
+    height: 40rem;
+}
+
+.task {
+    /*width: 10rem;*/
+    /*height: 10rem;*/
+    position: relative;
+    margin-bottom: 2%;
+    border-radius: 3px;
+    background-color: rgb(247, 247, 247);
+    border: 1px solid rgb(247, 247, 247);
+    color: rgb(247, 247, 247);
+    /*padding: 1rem;*/
+    box-sizing: border-box;
+}
+
+.task-todo {
+    color: rgb(217, 83, 79);
+    border-left: 5px solid rgb(217, 83, 79);
+    order: 1;
+}
+
+.task-in-progress {
+    color: rgb(240, 173, 78);
+    border-left: 5px solid rgb(240, 173, 78);
+    order: 2;
+}
+
+.task-done {
+    color: rgb(92, 184, 92);
+    border-left: 5px solid rgb(92, 184, 92);
+    order: 3;
+}
+
+.task-delete {
+    order: 4;
+}
+
+
+

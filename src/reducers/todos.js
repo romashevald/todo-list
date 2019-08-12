@@ -7,8 +7,6 @@ export const STATUSES = {
 };
 
 const todos = (state = [], action) => {
-    console.log('===action.id', action.id);
-    console.log('===action.id', state);
     switch (action.type) {
         case ADD_TODO:
             return [
@@ -16,16 +14,16 @@ const todos = (state = [], action) => {
                 {
                     id: action.id,
                     text: action.text,
-                    status: action.status,
+                    status: STATUSES.TODO,
                     description: action.description,
-                    idDeleted: false
+                    isDeleted: false
                 }
             ];
         case EDIT_TODO:
             return state.map(todo =>
                 (todo.id === action.id) ? {
                         ...todo
-                        , status: todo.status
+                        , status: action.status
                         , description: action.description,
                     }
                     : todo
@@ -35,7 +33,6 @@ const todos = (state = [], action) => {
                 (todo.id === action.id)
                     ? {
                         ...todo
-                        , status: todo.status
                         , isDeleted: true
                     }
                     : todo

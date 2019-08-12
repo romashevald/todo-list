@@ -49,7 +49,7 @@ class TaskEdit extends Component {
                             </select>
                         </div>
 
-                        <button type="submit" onClick={this._onSubmit}>
+                        <button onClick={this._onSubmit}>
                             Edit
                         </button>
 
@@ -64,15 +64,15 @@ class TaskEdit extends Component {
     _handleChange = e => {
         const el = e.target;
         const {value, name} = el;
-        this.setState({[el.name]: value});
+        this.setState({[name]: value});
     };
 
     _onSubmit = () => {
-        const {taskName, taskDescription, taskStatus} = this.state;
+        const {taskDescription, taskStatus} = this.state;
         const {editTodo} = this.props;
         editTodo(this._id, taskStatus, taskDescription);
         this.setState({editFinished: true});
-    };
+    }
 
 }
 
@@ -81,7 +81,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    editTodo: (id, taskStatus, taskDescriptio) => dispatch(editTodo(id, taskStatus, taskDescriptio))
+    editTodo: (id, taskStatus, taskDescription) => dispatch(editTodo(id, taskStatus, taskDescription))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskEdit)

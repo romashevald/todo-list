@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {editTodo, VisibilityFilters} from "../actions/actions";
+import {VisibilityFilters} from "../actions/actions";
 import {STATUSES} from "../reducers/todos";
 import TaskList from "../components/TaskList";
 
@@ -26,7 +26,4 @@ const mapStateToProps = state => ({
     todos: getVisibleTodos(state.todos, state.visibilityFilter)
 });
 
-export default connect(
-    mapStateToProps,
-    null
-)(TaskList)
+export default connect(mapStateToProps, null)(TaskList)

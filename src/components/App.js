@@ -1,17 +1,23 @@
-import React from 'react';
-import '../App.css';
+import React, {useState} from 'react';
+import '../style/App.css';
 import Footer from "./Footer";
 import VisibleTodoList from "../containers/VisibleTodoList";
-import TaskAddForm from "./TaskAddForm";
+import {URL_ADD, URL_LIST} from '../router/constants';
+import {Redirect} from 'react-router';
 
-const App = () => (
-    <div className="board">
-        <header className="App-header">
-            <TaskAddForm/>
-            <VisibleTodoList />
-            <Footer/>
-        </header>
-    </div>
-);
+const App = () => {
+    const [allowRedirect, setAllowRedirect] = useState(false);
+    if (allowRedirect) return <Redirect to={`${URL_LIST}${URL_ADD}`}/>;
+
+    return (
+        <div className="container" >
+            <div className="button-container">
+                <button className="add-button" onClick={() => setAllowRedirect(true)}>{'Add todos'}</button>
+            </div>
+            <VisibleTodoList/>
+            <div className="footer"><Footer/></div>
+        </div>
+    );
+};
 
 export default App

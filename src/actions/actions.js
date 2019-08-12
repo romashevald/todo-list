@@ -7,8 +7,8 @@ export const VisibilityFilters = {
 };
 
 export const ADD_TODO = 'ADD_TODO';
-export const addTodo = (text, status, description) => {
-    return {type: ADD_TODO, text, status, description}
+export const addTodo = (text, description) => {
+    return {type: ADD_TODO, text, description}
 };
 
 export const EDIT_TODO = 'EDIT_TODO';
