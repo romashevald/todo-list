@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {addTodo} from "../actions";
 import {Link} from 'react-router-dom';
 import {URL_LIST} from '../router/constants';
+import {Redirect} from 'react-router';
 
 class TaskAddForm extends Component {
     constructor(props) {
@@ -10,33 +11,40 @@ class TaskAddForm extends Component {
         this.state = {
             taskName: '',
             taskDescription: '',
+            allowRedirect: false
         };
     }
 
     render() {
-        const {taskName, taskDescription} = this.state;
+        const {taskName, taskDescription, allowRedirect} = this.state;
+        if (allowRedirect) return <Redirect to={URL_LIST}/>;
 
-        let input;
         return (
             <div className='task-add-form'>
                 <div>
-                    <div className='task-name'>{'taskName'}</div>
+                    <div className='title'><h2>Add todos</h2></div>
+
+                    <div className='title'><h3>{'Task name'}</h3></div>
                     <div className='input-add-form'>
                         <input value={taskName}
                                name='taskName'
                                onChange={this._handleChange}/>
                     </div>
 
-                    <div className='task-description'>{'task-description'}</div>
-                    <div className='input-add-form'>
-                        <input value={taskDescription}
-                               name='taskDescription'
-                               onChange={this._handleChange}/>
+                    <div className='title'>
+                        <h3>{'Task description'}</h3>
                     </div>
-                    <button onClick={this._onSubmit}>
+                    <div className='input-add-form'>
+                        <textarea value={taskDescription}
+                                  name='taskDescription'
+                                  style={{minWidth: '50%', minHeight: '10rem'}}
+                                  onChange={this._handleChange}/>
+                    </div>
+                    <button className="add-button" onClick={this._onSubmit}>
                         Add Todo
                     </button>
-                    <Link to={URL_LIST}>{'<<'}</Link>
+                    <button className="add-button"
+                            onClick={() => this.setState({allowRedirect: true})}>{'<<'}</button>
                 </div>
             </div>
         );

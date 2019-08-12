@@ -11,8 +11,8 @@ class TaskEdit extends Component {
         super(props);
         this._id = Number(/\d+/.exec(props.location.pathname));
         this.state = {
-            taskDescription: this.props.todos ? this.props.todos[this._id].description : JSON.parse(localStorage.getItem('todos'))[0].description,
-            taskStatus: this.props.todos ? this.props.todos[this._id].status : JSON.parse(localStorage.getItem('todos'))[0].status,
+            taskDescription: this.props.todos[this._id] ? this.props.todos[this._id].description : '',
+            taskStatus: this.props.todos[this._id] ? this.props.todos[this._id].status : 'todo',
             editFinished: false
         };
     }
@@ -26,19 +26,24 @@ class TaskEdit extends Component {
             <div className='task-edit-form'>
                 {currentTodo && !editFinished ?
                     <div>
-                        <div>Task Edit</div>
-
-                        <div className='task-name'>{'taskName'}</div>
-                        <div>{currentTodo.text}</div>
-
-                        <div className='task-description'>{'task-description'}</div>
-                        <div className='input-add-form'>
-                            <input value={taskDescription}
-                                   name='taskDescription'
-                                   onChange={this._handleChange}/>
+                        <div className="row">
+                            <div className='title'>
+                                <h2>Task Edit</h2>
+                            </div>
                         </div>
 
-                        <div className='task-status'>{'task-status'}</div>
+                        <div className='title'>
+                            <h3>{'Task name '} : {currentTodo.text} </h3>
+                        </div>
+
+                        <div className='title'><h3>{'Task description'}</h3></div>
+                        <div className='input-add-form'>
+                            <textarea value={taskDescription}
+                                      name='taskDescription'
+                                      onChange={this._handleChange}/>
+                        </div>
+
+                        <div className='title'><h3>{'Task status'}</h3></div>
                         <div className='input-add-form'>
                             <select value={taskStatus}
                                     name='taskStatus'
@@ -49,11 +54,13 @@ class TaskEdit extends Component {
                             </select>
                         </div>
 
-                        <button onClick={this._onSubmit}>
+                        <button className="add-button" onClick={this._onSubmit}>
                             Edit
                         </button>
 
-                        <Link to={URL_LIST}>{'<<'}</Link>
+                        <button className="add-button" onClick={() => this.setState({editFinished: true})}>
+                            {'<<'}
+                        </button>
                     </div>
                     : <Redirect to={URL_LIST}/>
                 }

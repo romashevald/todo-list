@@ -14,6 +14,28 @@
     justify-content: center;
 }
 
+input, select {
+    width: 50%;
+    padding: 0.5rem 0.5rem;
+    /*margin: 8px 0;*/
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+select {
+    width: 10%;
+}
+
+textarea {
+    min-width: 50%;
+    min-height: 10rem;
+}
+
+.title {
+    margin-right: 5rem;
+}
+
 .footer-group-button {
     margin: 0;
 }
@@ -44,8 +66,7 @@
     border: 0.16em solid rgba(255, 255, 255, 0);
     cursor: pointer;
     color: rgb(247, 247, 247);
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
+    margin: 0.5rem;
 }
 
 .add-button:hover {
@@ -54,6 +75,8 @@
 }
 
 .task-add-form {
+    display: flex;
+    flex-direction: column;
 }
 
 .task-list {
@@ -95,6 +118,12 @@
 .task-delete {
     order: 4;
 }
+
+.task-edit-form {
+    display: flex;
+    flex-direction: column;
+}
+
 
 
 
