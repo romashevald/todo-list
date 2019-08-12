@@ -3,7 +3,6 @@ import {VisibilityFilters} from "../actions/actions";
 import {STATUSES} from "../reducers/todos";
 import TaskList from "../components/TaskList";
 
-// TODO route or redux  show
 const getVisibleTodos = (todos, filter) => {
     switch (filter) {
         case VisibilityFilters.SHOW_ALL:

@@ -1,13 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Task from "./Task";
+import {STATUSES} from "../reducers/todos";
+
+const filterTodos = (todos, status) => todos.filter(v => v.status === status && !v.isDeleted);
 
 const TaskList = ({todos}) => {
+
     return (
         <div className="task-list">
-            {todos.map(todo =>
-                <Task key={todo.id} {...todo}/>
-            )}
+            <div className="task">
+                <div className='task-name'>{'Todo'}</div>
+                <div className='task-todo'>
+                    {filterTodos(todos, STATUSES.TODO).map(todo =>
+                        <Task key={todo.id} {...todo}/>
+                    )}
+                </div>
+            </div>
+            <div children="task">
+                <div className='task-name'>{'In progress'}</div>
+                <div className='task-todo'>
+                    {filterTodos(todos, STATUSES.IN_PROGRESS).map(todo =>
+                        <Task key={todo.id} {...todo}/>
+                    )}
+                </div>
+            </div>
+            <div children="task">
+                <div className='task-name'>{'Done'}</div>
+                <div className='task-todo'>
+                    {filterTodos(todos, STATUSES.DONE).map(todo =>
+                        <Task key={todo.id} {...todo}/>
+                    )}
+                </div>
+            </div>
         </div>
     );
 };

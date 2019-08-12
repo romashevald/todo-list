@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Link = ({active, children, onClick}) => (
+const Link = ({active, children, onClick}) =>
     <button className="footer-button"
-        onClick={onClick}
+            onClick={onClick}
             disabled={active}>
         {children}
-    </button>
-);
+    </button>;
 
 Link.propTypes = {
     active: PropTypes.bool.isRequired,

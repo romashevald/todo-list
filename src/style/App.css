@@ -53,6 +53,10 @@ textarea {
     opacity: 0.8;
 }
 
+.footer-button:disabled {
+    background: #868e96 ;
+}
+
 .button-container {
     display: flex;
     justify-content: center;
@@ -79,45 +83,91 @@ textarea {
     flex-direction: column;
 }
 
-.task-list {
-    background-color: rgb(247, 247, 247);
-    height: 40rem;
-}
-
-.task {
-    box-sizing: border-box;
-    max-height: 10rem;
-    max-width: 25%;
-    padding: 0.3rem;
-    text-align: center;
-}
-
-.task-todo {
-    color: rgb(217, 83, 79);
-    border-left: 5px solid rgb(217, 83, 79);
-    order: 1;
-}
-
-.task-in-progress {
-    color: rgb(240, 173, 78);
-    border-left: 5px solid rgb(240, 173, 78);
-    order: 2;
-}
-
-.task-done {
-    color: rgb(92, 184, 92);
-    border-left: 5px solid rgb(92, 184, 92);
-    order: 3;
-}
-
-.task-delete {
-    order: 4;
-}
-
 .task-edit-form {
     display: flex;
     flex-direction: column;
 }
+
+.task-list {
+    background-color: rgb(247, 247, 247);
+    height: 40rem;
+    overflow-x: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.task {
+    max-height: 10rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 33%;
+    padding: 0.3rem;
+}
+
+.task-name {
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.form-task-text {
+    border: black;
+    word-wrap: break-word;
+}
+
+.form-task-description {
+    border-top: black;
+    word-wrap: break-word;
+}
+
+.form-task {
+    border: 1px solid #dedede;
+    flex-grow: 2;
+    padding: 1rem;
+
+}
+
+.form-task-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.3rem;
+}
+
+.task-todo {
+    flex-grow: 2;
+}
+
+.task-in-progress {
+    flex-grow: 2;
+}
+
+.task-done {
+    flex-grow: 2;
+}
+
+.task-delete {
+}
+
+.form-remove {
+    height: 2rem;
+    width: 2rem;
+}
+
+.form-remove:hover {
+    background: rgb(241, 241, 241);
+}
+
+.form-edit {
+    height: 2rem;
+    width: 2rem;
+}
+
+.form-edit:hover {
+    background: rgb(241, 241, 241);
+}
+
+
 
 
 

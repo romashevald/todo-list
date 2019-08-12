@@ -5,6 +5,7 @@ import VisibleTodoList from "../containers/VisibleTodoList";
 import {URL_ADD, URL_LIST} from '../router/constants';
 import {Redirect} from 'react-router';
 
+
 const App = () => {
     const [allowRedirect, setAllowRedirect] = useState(false);
     if (allowRedirect) return <Redirect to={`${URL_LIST}${URL_ADD}`}/>;
