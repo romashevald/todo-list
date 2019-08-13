@@ -7,21 +7,14 @@ import TaskEdit from "../components/TaskEdit";
 import {Route} from 'react-router';
 import TaskAddForm from '../components/TaskAddForm';
 import DeletedTasks from '../components/DeletedTasks';
-import {Redirect} from 'react-router';
 
-export const Root = ({store}) => {
-    if (window.location.href === 'http://localhost:3000') {
-        return <Redirect to={`http://localhost:3000${URL_LIST}`}/>
-    }
-    console.log('====window.location.href', window.location.href);
-    return (
-        <Provider store={store}>
-            <Router>
-                <Route exact path={URL_LIST} component={App}/>
-                <Route path={`${URL_LIST}/:id${URL_EDIT}`} component={TaskEdit}/>
-                <Route path={`${URL_LIST}${URL_ADD}`} component={TaskAddForm}/>
-                <Route path={`${URL_LIST}${URL_DELETED}`} component={DeletedTasks}/>
-            </Router>
-        </Provider>
-    );
-};
+export const Root = ({store}) => (
+    <Provider store={store}>
+        <Router>
+            <Route exact path={URL_LIST} component={App}/>
+            <Route path={`${URL_LIST}/:id${URL_EDIT}`} component={TaskEdit}/>
+            <Route path={`${URL_LIST}${URL_ADD}`} component={TaskAddForm}/>
+            <Route path={`${URL_LIST}${URL_DELETED}`} component={DeletedTasks}/>
+        </Router>
+    </Provider>
+);

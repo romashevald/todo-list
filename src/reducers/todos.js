@@ -6,12 +6,12 @@ export const STATUSES = {
     DONE: 'done'
 };
 
-const initialState = [];
+const initialState = localStorage['todos'] ? JSON.parse(localStorage['todos']) : [];
 
-const todos = (state = [], action) => {
+const todos = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TODO:
-            return [
+            const addData = [
                 ...state,
                 {
                     id: action.id,
@@ -21,8 +21,10 @@ const todos = (state = [], action) => {
                     isDeleted: false
                 }
             ];
+            localStorage.setItem('todos', JSON.stringify(addData));
+            return addData;
         case EDIT_TODO:
-            return state.map(todo =>
+            const editData = state.map(todo =>
                 (todo.id === action.id) ? {
                         ...todo
                         , status: action.status
@@ -30,8 +32,10 @@ const todos = (state = [], action) => {
                     }
                     : todo
             );
+            localStorage.setItem('todos', JSON.stringify(editData));
+            return editData
         case REMOVE_TODO:
-            return state.map(todo =>
+            const removeData = state.map(todo =>
                 (todo.id === action.id)
                     ? {
                         ...todo
@@ -39,6 +43,9 @@ const todos = (state = [], action) => {
                     }
                     : todo
             );
+            localStorage.setItem('todos', JSON.stringify(removeData));
+
+            return removeData
         default:
             return state
     }

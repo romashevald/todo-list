@@ -5,7 +5,10 @@ import todoApp from "./reducers";
 import logger from 'redux-logger'
 import {Root} from "./router/Root";
 
-const store = createStore(todoApp, applyMiddleware(logger));
+if (window.location.href === 'http://localhost:3000/') {
+    window.location.href += 'list';
+}
 
+const store = createStore(todoApp, applyMiddleware(logger));
 
 render(<Root store={store}/>, document.getElementById('root'));

@@ -18,7 +18,7 @@ const DeletedTasks = ({visibilityFilter, onClick, todos}) => {
                 <div className='task-delete'>
                     {todos.filter(v => v.isDeleted).map(todo => {
                             return (
-                                <div className='form-task'>
+                                <div className='form-task' key={`delete-${todo.id}`}>
                                     <div className='form-task-text'>{todo.text}</div>
                                     <div className='form-task-description'>{todo.description}</div>
                                 </div>
