@@ -7,4 +7,5 @@ import {Root} from "./router/Root";
 
 const store = createStore(todoApp, applyMiddleware(logger));
 
+
 render(<Root store={store}/>, document.getElementById('root'));

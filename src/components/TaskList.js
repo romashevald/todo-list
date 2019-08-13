@@ -2,10 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Task from "./Task";
 import {STATUSES} from "../reducers/todos";
+import {Redirect} from 'react-router';
+import {URL_DELETED, URL_LIST} from '../router/constants';
+import {VisibilityFilters} from '../actions/actions';
 
-const filterTodos = (todos, status) => todos.filter(v => v.status === status && !v.isDeleted);
+export const filterTodos = (todos, status) => todos.filter(v => v.status === status && !v.isDeleted);
 
-const TaskList = ({todos}) => {
+const TaskList = ({todos, visibilityFilter}) => {
+
+    if (visibilityFilter === VisibilityFilters.SHOW_DELETED) {
+        return <Redirect to={`${URL_LIST}${URL_DELETED}`}/>
+    }
 
     return (
         <div className="task-list">

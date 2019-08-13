@@ -16,7 +16,7 @@ class TaskAddForm extends Component {
 
     render() {
         const {taskName, taskDescription, allowRedirect} = this.state;
-        if (allowRedirect) return <Redirect to={URL_LIST}/>;
+        if (allowRedirect) {return <Redirect to={URL_LIST}/>;}
 
         return (
             <div className='task-add-form'>

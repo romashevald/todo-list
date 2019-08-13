@@ -6,6 +6,8 @@ export const STATUSES = {
     DONE: 'done'
 };
 
+const initialState = [];
+
 const todos = (state = [], action) => {
     switch (action.type) {
         case ADD_TODO:

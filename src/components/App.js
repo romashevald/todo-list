@@ -11,7 +11,7 @@ const App = () => {
     if (allowRedirect) return <Redirect to={`${URL_LIST}${URL_ADD}`}/>;
 
     return (
-        <div className="container" >
+        <div className="container">
             <div className="button-container">
                 <button className="add-button" onClick={() => setAllowRedirect(true)}>{'Add todos'}</button>
             </div>
@@ -21,4 +21,4 @@ const App = () => {
     );
 };
 
-export default App
+export default App;

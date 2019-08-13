@@ -109,7 +109,6 @@ const mapStateToProps = state => ({
 });
 
 
-
 const mapDispatchToProps = dispatch => ({
     editTodo: (id) => dispatch(removeTodo(id))
 });

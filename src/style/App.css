@@ -54,7 +54,7 @@ textarea {
 }
 
 .footer-button:disabled {
-    background: #868e96 ;
+    background: #868e96;
 }
 
 .button-container {
@@ -106,9 +106,41 @@ textarea {
     padding: 0.3rem;
 }
 
+.tasks-deleted {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0.3rem;
+    max-width: 15rem;
+}
+
+.task-delete {
+    background: rgb(237, 237, 237);
+}
+
 .task-name {
     word-wrap: break-word;
     text-align: center;
+}
+
+.container-revert-buttons {
+}
+
+.revert-button {
+    background-color: rgb(92, 184, 92);
+    width: 10rem;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: 0.16em solid rgba(255, 255, 255, 0);
+    cursor: pointer;
+    color: rgb(247, 247, 247);
+    margin: 0.5rem;
+}
+
+.deleted-task-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .form-task-text {
@@ -121,13 +153,14 @@ textarea {
     border-top: black;
     word-wrap: break-word;
     opacity: 0.5;
+    text-align: center;
+
 }
 
 .form-task {
     border: 1px solid #dedede;
     flex-grow: 2;
     padding: 1rem;
-
 }
 
 .form-task-buttons {
@@ -148,7 +181,10 @@ textarea {
     flex-grow: 2;
 }
 
-.task-delete {
+.task-deleted {
+    flex-grow: 3;
+    max-width: 15rem;
+
 }
 
 .form-remove {
