@@ -114,11 +114,13 @@ textarea {
 .form-task-text {
     border: black;
     word-wrap: break-word;
+    text-align: center;
 }
 
 .form-task-description {
     border-top: black;
     word-wrap: break-word;
+    opacity: 0.5;
 }
 
 .form-task {
