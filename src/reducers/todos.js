@@ -33,7 +33,7 @@ const todos = (state = initialState, action) => {
                     : todo
             );
             localStorage.setItem('todos', JSON.stringify(editData));
-            return editData
+            return editData;
         case REMOVE_TODO:
             const removeData = state.map(todo =>
                 (todo.id === action.id)
@@ -45,7 +45,7 @@ const todos = (state = initialState, action) => {
             );
             localStorage.setItem('todos', JSON.stringify(removeData));
 
-            return removeData
+            return removeData;
         default:
             return state
     }
